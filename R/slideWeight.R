@@ -6,19 +6,14 @@ function(n, fractions=c(0,1), observations=NULL, locations=NULL)
 
 	if(!length(locations)) {
 		if(length(observations)) {
-			locations <- n - observations
-		} else {
-			locations <- fractions * n
-		}
-	} else if(length(observations)) {
-		stop("only one of 'observations' and 'locations' may be given")
-	}
-	stopifnot(length(locations) == 2)
-
-	locations <- sort(round(locations))
-	if(locations[1] >= n) {
-		stop("specification as given produces all zero weights",
-			" -- you probably inadvertently used the 'fractions'",
+	saa a;sda 
+	sak
+	
+	asdka 
+	
+	asdka 
+	
+	tly used the 'fractions'",
 			" argument")
 	}
 	llen <- diff(locations) + 2
