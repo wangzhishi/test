@@ -90,54 +90,7 @@ function (..., rep=1, union=TRUE, slicenames=NULL)
 	if(length(slicenames)) {
 		if(length(slicenames) != ndot * rep) {
 			stop(paste("length of 'slicenames' is", 
-				length(slicenames), "-- should be", 
-				ndot * rep))
-		}
-		snam <- slicenames
-	} else {
-		snam <- names(dots)
-		if(length(snam) && rep > 1) {
-			snam <- paste(snam, rep(1:rep, each=ndot), sep=".")
-		}
-	}
-	ans <- array(NA, c(nr, nc, ndot * rep), list(rnam, cnam, snam))
-	ncode <- paste(if(length(rnam)) "R" else "N", 
-		if(length(cnam)) "C" else "N", sep="")
-	switch(ncode,
-	  RC={
-		for(i in 1:ndot) {
-			thismat <- as.matrix(dots[[i]])
-			thisr <- intersect(dimnames(thismat)[[1]], rnam)
-			thisc <- intersect(dimnames(thismat)[[2]], cnam)
-			ans[thisr, thisc, i] <- thismat[thisr, thisc]
-		}
-	  },
-	  RN={
-		for(i in 1:ndot) {
-			thismat <- as.matrix(dots[[i]])
-			thisr <- intersect(dimnames(thismat)[[1]], rnam)
-			ans[thisr,, i] <- thismat[thisr,]
-		}
-	  },
-	  NC={
-		for(i in 1:ndot) {
-			thismat <- as.matrix(dots[[i]])
-			thisc <- intersect(dimnames(thismat)[[2]], cnam)
-			ans[,thisc, i] <- thismat[,thisc]
-		}
-	  },
-	  NN={
-		for(i in 1:ndot) {
-			ans[,,i] <- as.matrix(dots[[i]])
-		}
-	  }
-	)
-	if(rep > 1) {
-		orig <- ans[,,1:ndot]
-		for(i in 2:rep) {
-			ans[,, 1:ndot + (i-1)*ndot] <- orig
-		}
-	}
+
 	ans
 }
 
