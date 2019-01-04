@@ -1,3 +1,4 @@
+another change here
 "factor.model.stat" <-
 function (x, weights=seq(0.5, 1.5, length.out=nobs), output="full", center=TRUE, 
 	frac.var=.5, iter.max=1, nfac.miss=1, full.min=20, reg.min=40, 
