@@ -1,3 +1,5 @@
+this is branch 1
+
 "alpha.proxy" <-
 function (weight=.2, vol.man=.2, vol.bench=.2, vol.other=.2, cor.man=.2,
 	cor.bench=.2, plot.it=TRUE, transpose=FALSE, ...)
